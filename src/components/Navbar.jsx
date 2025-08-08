@@ -1,0 +1,75 @@
+import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
+import "../styles/Navbar.css";
+
+const Navbar = ({ cartCount = 0 }) => { // cartCount prop to show count
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null);
+  const toggleRef = useRef(null);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  // Close menu if clicked outside of nav menu or toggle button
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        toggleRef.current &&
+        !toggleRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
+
+  return (
+    <nav className="navbar">
+      <div className="navbar__logo">
+        <Link to="/">Mens<span className="highlight">Wear</span></Link>
+      </div>
+
+      {/* Hamburger icon */}
+      <button
+        className="navbar__toggle"
+        onClick={toggleMenu}
+        ref={toggleRef}
+        aria-label="Toggle menu"
+      >
+        {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+      </button>
+
+      <ul
+        className={`navbar__links ${isOpen ? "active" : ""}`}
+        ref={menuRef}
+      >
+        <li>
+          <Link to="/" onClick={() => setIsOpen(false)}>Home</Link>
+        </li>
+        <li>
+          <Link to="/shop" onClick={() => setIsOpen(false)}>Shop</Link>
+        </li>
+        <li>
+          <Link to="/cart" onClick={() => setIsOpen(false)}>Cart</Link>
+        </li>
+        <li>
+          <Link to="/about" onClick={() => setIsOpen(false)}>About</Link>
+        </li>
+      </ul>
+
+      <div className="navbar__cart">
+        <Link to="/cart" className="cart-icon-wrapper">
+          <FaShoppingCart size={22} />
+          {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+        </Link>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
