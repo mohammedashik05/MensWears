@@ -1,13 +1,15 @@
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/ProductDetails.css";
 import products from "../data/products";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ProductContext } from "../components/ProductProvider";
 
 function ProductDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useContext(ProductContext);
+
+  const [showPopup, setShowPopup] = useState(false);
 
   // Find the product by id
   const product = products.find((p) => p.id.toString() === id);
@@ -22,10 +24,11 @@ function ProductDetails() {
 
   const handleAddToCart = () => {
     addToCart(product);
-    alert("Item added to Cart");
-  };
+    setShowPopup(true);
 
-  
+    // Hide popup after 2 seconds
+    setTimeout(() => setShowPopup(false), 2000);
+  };
 
   return (
     <div className="product-detail">
@@ -34,8 +37,15 @@ function ProductDetails() {
         alt={`Image of ${product.name}`}
         className="product-detail-image"
       />
-
+      
       <div className="product-content">
+        {/* Popup */}
+        {showPopup && (
+        <div className="cart-popup">
+          ✅ Item added to cart!
+        </div>
+      )}
+
         <h2>{product.name}</h2>
         <p>
           <strong>Price:</strong> ₹ {product.price}
@@ -58,6 +68,8 @@ function ProductDetails() {
           ← Back to Home
         </button>
       </div>
+
+
     </div>
   );
 }
