@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.testimonial-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  background: #f9f9f9;
+  
+}
+
+.testimonial-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #ff6600;
+}
+
+.testimonial-slider {
+  max-width: 700px;
+  margin: auto;
+  position: relative;
+}
+
+.testimonial-card {
+  background: #fff;
+  padding: 20px 0 20px;
+  
+  /* border-radius: 12px; */
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  /* max-width: 650px; */
+  width: fit-content;
+}
+
+.testimonial-card img {
+  margin: auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.testimonial-card .review {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 15px;
+  /* slightly narrower so arrows don't overlap text */
+  margin-left: auto;
+  padding: 0%;
+  margin: 0%;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.testimonial-card h4 {
+  color: #ff6600;
+  font-weight: bold;
+}
+
+.arrow-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+/* Desktop - arrows outside card */
+.arrow-btn.prev {
+  left: -50px;
+}
+
+.arrow-btn.next {
+  right: -50px;
+}
+
+.arrow-btn svg {
+  font-size: 18px;
+  color: #0c0c0c;
+}
+
+/* Tablet adjustments */
+@media (max-width: 768px) {
+  .arrow-btn.prev {
+    left: -30px;
+  }
+  .arrow-btn {
+    padding: 8px;
+  }
+  .arrow-btn.next {
+    right: -30px;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .testimonial-card {
+    padding:10px 0 10px 
+  }
+  .testimonial-section h2 {
+    font-size: 1.5rem;
+    width: fit-content;
+    flex-wrap: nowrap;
+  }
+  .arrow-btn {
+    padding: 8px;
+  }
+  .arrow-btn.prev {
+    left: -20px;
+  }
+  .arrow-btn.next {
+    right: -20px;
+  }
+  .testimonial-slider {
+    max-width: 300px;
+    margin: auto;
+  }
+}
