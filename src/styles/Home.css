@@ -2,7 +2,7 @@
 
 .home-container {
     padding: 20px;
-    max-width: 1200px;
+    max-width: 80%;
     margin: auto;
 }
 
@@ -16,6 +16,7 @@
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(1, 1fr); /* Mobile default */
+  
 }
 
 @media screen and (min-width: 600px) {
