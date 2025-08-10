@@ -50,12 +50,17 @@ const removeFromCart = (id) => {
   setCartItems((prev) => prev.filter((item) => item.id !== id));
 };
 
+const clearCart =()=>{
+  setCartItems([]);
+
+}
+
 // Make sure to export these:
 
 
 
   return (
-    <ProductContext.Provider value={{ cartItems, addToCart, incrementQuantity, decrementQuantity, removeFromCart }}>
+    <ProductContext.Provider value={{ cartItems, addToCart, incrementQuantity, decrementQuantity, removeFromCart ,clearCart}}>
       {children}
     </ProductContext.Provider>
   );

@@ -3,6 +3,7 @@ import "../styles/ProductDetails.css";
 import products from "../data/products";
 import { useContext, useState } from "react";
 import { ProductContext } from "../components/ProductProvider";
+import Footer from "../components/Footer.jsx" 
 
 function ProductDetails() {
   const { id } = useParams();
@@ -31,17 +32,18 @@ function ProductDetails() {
   };
 
   return (
+    <>
     <div className="product-detail">
       <img
         src={product.image}
         alt={`Image of ${product.name}`}
         className="product-detail-image"
-      />
+        />
       
       <div className="product-content">
         {/* Popup */}
         {showPopup && (
-        <div className="cart-popup">
+          <div className="cart-popup">
           ✅ Item added to cart!
         </div>
       )}
@@ -71,6 +73,8 @@ function ProductDetails() {
 
 
     </div>
+    <Footer  />
+      </>
   );
 }
 

@@ -3,6 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import "../styles/Home.css";
 import products from "../data/products";
 import ProductCard from "../components/ProductCard";
+import Footer from "../components/Footer.jsx" 
 
 function Home() {
     const [currentPage, setCurrentPage] = useState(1);
@@ -71,6 +72,8 @@ function Home() {
                     )}
                 </div>
             </div>
+
+            <Footer />
         </>
     );
 }

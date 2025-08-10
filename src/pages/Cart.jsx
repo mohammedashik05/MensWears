@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import { ProductContext } from "../components/ProductProvider";
 import "../styles/Cart.css";
+import Footer from "../components/Footer.jsx" 
 
 function Cart() {
-  const { cartItems, incrementQuantity, decrementQuantity, removeFromCart } =
+  const { cartItems, incrementQuantity, decrementQuantity, removeFromCart ,clearCart } =
     useContext(ProductContext);
 
   const [showSummary, setShowSummary] = useState(false);
@@ -22,9 +23,13 @@ function Cart() {
     alert(`Order placed! Shipping to:\n${address}`);
     setShowSummary(false);
     setAddress("");
+    clearCart();
+
   };
 
   return (
+
+    <>
     <div className="cart-container">
       {/* Left Side - Scrollable Cart Items */}
       <div className="cart-items">
@@ -46,7 +51,7 @@ function Cart() {
                 <button
                   className="remove-btn"
                   onClick={() => removeFromCart(item.id)}
-                >
+                  >
                   Remove
                 </button>
                 <div className="item-subTotal">
@@ -69,8 +74,8 @@ function Cart() {
         <button className="buy-now-btn">Buy Now</button>
         {cartItems.length > 0 && (
           <button
-            className="view-summary-btn"
-            onClick={() => setShowSummary(true)}
+          className="view-summary-btn"
+          onClick={() => setShowSummary(true)}
           >
             View Detailed Summary
           </button>
@@ -134,7 +139,7 @@ function Cart() {
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 rows="3"
-              />
+                />
             </div>
 
             <div className="summary-footer">
@@ -147,6 +152,9 @@ function Cart() {
         </div>
       )}
     </div>
+
+    <Footer />
+      </>
   );
 }
 
