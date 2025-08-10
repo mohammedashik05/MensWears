@@ -7,11 +7,22 @@ function Cart() {
     useContext(ProductContext);
 
   const [showSummary, setShowSummary] = useState(false);
+  const [address, setAddress] = useState("");
 
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
   const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const discount = totalPrice * 0.1;
   const finalTotal = totalPrice - discount;
+
+  const handleCheckout = () => {
+    if (!address.trim()) {
+      alert("Please enter your shipping address before proceeding.");
+      return;
+    }
+    alert(`Order placed! Shipping to:\n${address}`);
+    setShowSummary(false);
+    setAddress("");
+  };
 
   return (
     <div className="cart-container">
@@ -114,8 +125,23 @@ function Cart() {
                 </tfoot>
               </table>
             </div>
+
+            {/* Address Input */}
+            <div className="address-section">
+              <h3>Shipping Address</h3>
+              <textarea
+                placeholder="Enter your delivery address..."
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                rows="3"
+              />
+            </div>
+
             <div className="summary-footer">
-              <button className="buy-now-btn">Proceed to Checkout</button>
+              <button className="buy-now-btn" onClick={handleCheckout}>
+                Proceed to Checkout
+              </button>
+              
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@
   display: flex;
   gap: 20px;
   padding: 20px;
-  flex-wrap: wrap; /* Helps with smaller screens */
+  flex-wrap: wrap; 
 }
 /* Make cart items scrollable and keep summary fixed */
 .cart-items {
@@ -29,13 +29,6 @@
 /* Rest of your popup, table, and button styles stay as in your CSS */
 
 /* Left side - items */
-.cart-items {
-  flex: 2;
-  background: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-}
 
 .cart-item {
   display: flex;
@@ -119,60 +112,7 @@
   background: #e65c00;
 }
 
-/* ========================= */
-/* 📱 Responsive Styles */
-/* ========================= */
 
-/* Tablet view (max-width 1024px) */
-@media (max-width: 1024px) {
-  .cart-container {
-    flex-direction: column;
-    padding: 10%;
-  }
-
-  .cart-items,
-  .cart-summary {
-    width: 90%;
-  }
-
-  .cart-summary {
-    margin-top: 20px;
-  }
-}
-
-/* Mobile view (max-width 768px) */
-@media (max-width: 768px) {
-
-  .cart-container{
-    padding: 10%;
-  }
-  .cart-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .cart-item img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-  }
-
-  .quantity-controls {
-    margin-top: 10px;
-  }
-}
-
-/* Extra small screens (max-width 480px) */
-@media (max-width: 480px) {
-  .item-name {
-    font-size: 14px;
-  }
-
-  .buy-now-btn {
-    font-size: 14px;
-    padding: 8px;
-  }
-}
 
 /* Popup overlay */
 .summary-popup {
@@ -190,6 +130,7 @@
 
 /* Popup box */
 .summary-content {
+  position: relative;
   background: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -269,3 +210,83 @@
 .view-summary-btn:hover {
   background-color: #0056b3;
 }
+
+/* Make left side scrollable */
+.scrollable-cart {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Address Section */
+.address-section {
+  margin-top: 15px;
+}
+
+.address-section textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: none;
+  font-size: 14px;
+}
+
+
+/* ========================= */
+/* 📱 Responsive Styles */
+/* ========================= */
+
+/* Tablet view (max-width 1024px) */
+@media (max-width: 1024px) {
+  .cart-container {
+    flex-direction: column;
+    padding: 10%;
+  }
+
+  .cart-items,
+  .cart-summary {
+    width: 90%;
+  }
+
+  .cart-summary {
+    margin-top: 20px;
+  }
+}
+
+/* Mobile view (max-width 768px) */
+@media (max-width: 768px) {
+
+  .cart-container{
+    padding: 10%;
+  }
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-item img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .quantity-controls {
+    margin-top: 10px;
+  }
+}
+
+/* Extra small screens (max-width 480px) */
+@media (max-width: 480px) {
+  .summary-popup {
+    width: 100%;
+  }
+  .item-name {
+    font-size: 14px;
+  }
+
+  .buy-now-btn {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
