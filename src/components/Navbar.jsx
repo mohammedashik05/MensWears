@@ -30,19 +30,12 @@ const Navbar = ({ cartCount = 0 }) => {
   return (
     <>
       <nav className="navbar">
+        {/* Logo */}
         <div className="navbar__logo">
           <Link to="/">Mens<span className="highlight">Wear</span></Link>
         </div>
 
-        <button
-          className="navbar__toggle"
-          onClick={toggleMenu}
-          ref={toggleRef}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
-        </button>
-
+        {/* Desktop Nav Links */}
         <ul
           className={`navbar__links ${isOpen ? "active" : ""}`}
           ref={menuRef}
@@ -61,7 +54,17 @@ const Navbar = ({ cartCount = 0 }) => {
           </li>
         </ul>
 
-        <div className="navbar__cart">
+        {/* Icons container (Toggle + Cart) */}
+        <div className="navbar__icons">
+          <button
+            className="navbar__toggle"
+            onClick={toggleMenu}
+            ref={toggleRef}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+          </button>
+
           <Link to="/cart" className="cart-icon-wrapper">
             <FaShoppingCart size={22} />
             {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
@@ -76,3 +79,4 @@ const Navbar = ({ cartCount = 0 }) => {
 };
 
 export default Navbar;
+

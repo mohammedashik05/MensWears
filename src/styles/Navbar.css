@@ -42,21 +42,55 @@
   color: #ff6600;
 }
 
-.navbar__cart a {
+/* Cart icon styles */
+.cart-icon-wrapper {
+  position: relative;
+  display: inline-block;
   color: #333;
   transition: color 0.3s ease;
 }
 
-.navbar__cart a:hover {
+.cart-icon-wrapper:hover {
   color: #ff6600;
 }
 
+/* Cart count badge */
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* Toggle button hidden on desktop */
 .navbar__toggle {
-  display: none;
   background: none;
   border: none;
   cursor: pointer;
   color: #333;
+}
+
+/* Icons container (toggle + cart) */
+.navbar__icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Overlay background for mobile menu */
+.navbar__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
 }
 
 /* RESPONSIVE STYLES */
@@ -73,7 +107,7 @@
     box-shadow: -2px 0 8px rgba(0,0,0,0.15);
     transform: translateX(100%);
     transition: transform 0.3s ease;
-    z-index: 10; /* above overlay */
+    z-index: 10;
   }
 
   .navbar__links.active {
@@ -84,37 +118,13 @@
     display: block;
   }
 
-  .navbar__links li {
-    text-align: left;
-    padding: 0.5rem 0;
+  .navbar__icons {
+    margin-left: auto;
   }
 }
 
-
-/* Badge styles for cart count */
-.cart-icon-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.cart-count {
-  position: absolute;
-  top: -6px;
-  right: -10px;
-  background: red;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 50%;
-}
-/* Overlay background for mobile menu */
-.navbar__overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 5;
+@media (min-width: 769px) {
+  .navbar__toggle {
+    display: none;
+  }
 }
